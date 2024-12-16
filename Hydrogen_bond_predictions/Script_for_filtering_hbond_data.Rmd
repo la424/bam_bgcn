@@ -1,0 +1,241 @@
+---
+title: "FIlter_pseudobonds"
+author: "Luke"
+date: "2024-03-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+library(tidyverse)
+library(knitr)
+```
+
+```{r}
+mel_bgcn_hbonds_cleaned <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bgcn_bonds_cleaned/mel_bgcn_hbonds_cleaned.csv")
+mel_bgcn_hbonds_cleaned %>% head() %>% kable()
+```
+
+```{r}
+colnames(mel_bgcn_hbonds_cleaned)
+```
+
+
+```{r}
+mel_bgcn_hbonds_cleaned_filtered <- mel_bgcn_hbonds_cleaned %>% filter(distance_between >= 5)
+mel_bgcn_hbonds_cleaned_filtered %>% head() %>% kable()
+```
+```{r}
+write.csv(mel_bgcn_hbonds_cleaned_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bgcn_bonds_cleaned/mel_bgcn_hbonds_cleaned_filtered.csv")
+```
+
+
+```{r}
+sim_bgcn_hbonds_cleaned <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bgcn_bonds_cleaned/sim_bgcn_hbonds_cleaned.csv")
+sim_bgcn_hbonds_cleaned %>% head() %>% kable()
+```
+```{r}
+sim_bgcn_hbonds_cleaned_filtered <- sim_bgcn_hbonds_cleaned %>% filter(distance_between >= 5)
+sim_bgcn_hbonds_cleaned_filtered %>% head() %>% kable()
+```
+```{r}
+write.csv(sim_bgcn_hbonds_cleaned_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bgcn_bonds_cleaned/sim_bgcn_hbonds_cleaned_filtered.csv")
+```
+
+```{r}
+tei_bgcn_hbonds_cleaned <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bgcn_bonds_cleaned/tei_bgcn_hbonds_cleaned.csv") 
+  
+```
+```{r}
+tei_bgcn_hbonds_cleaned_filtered <- tei_bgcn_hbonds_cleaned %>% filter(distance_between >= 5)
+```
+
+```{r}
+write.csv(tei_bgcn_hbonds_cleaned_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bgcn_bonds_cleaned/tei_bgcn_hbonds_cleaned_filtered.csv")
+```
+
+
+```{r}
+yak_bgcn_hbonds_cleaned <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bgcn_bonds_cleaned/yak_bgcn_hbonds_cleaned.csv") 
+```
+
+```{r}
+yak_bgcn_hbonds_cleaned_filtered <- yak_bgcn_hbonds_cleaned %>% filter(distance_between >= 5)
+```
+
+```{r}
+write.csv(yak_bgcn_hbonds_cleaned_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bgcn_bonds_cleaned/yak_bgcn_hbonds_cleaned_filtered.csv")
+```
+
+```{r}
+mel_bam_bgcn_hbonds_cleaned_bgcn_side <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_bam_(bgcn)_hbonds_cleaned.csv")
+mel_bgcn_hbonds_cleaned %>% head() %>% kable()
+```
+```{r}
+mel_bam_bgcn_hbonds_cleaned_bgcn_side_filtered <- mel_bam_bgcn_hbonds_cleaned_bgcn_side %>% filter(distance_between >= 5)
+```
+
+```{r}
+write.csv(mel_bam_bgcn_hbonds_cleaned_bgcn_side_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_bam_(bgcn)_cleaned_filtered.csv")
+```
+
+
+
+```{r}
+mel_simbam_bgcn_hbonds_cleaned_bgcn_side <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_simbam_(bgcn)_hbonds_cleaned.csv")
+mel_simbam_bgcn_hbonds_cleaned_bgcn_side %>% head() %>% kable()
+```
+
+```{r}
+mel_simbam_bgcn_hbonds_cleaned_bgcn_side_filtered <- mel_simbam_bgcn_hbonds_cleaned_bgcn_side %>% filter(distance_between >= 5)
+```
+
+
+```{r}
+write.csv(mel_simbam_bgcn_hbonds_cleaned_bgcn_side_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_simbam_(bgcn)_cleaned_filtered.csv")
+```
+
+
+```{r}
+sim_bam_bgcn_hbonds_cleaned_bgcn_side <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/sim_bam_(bgcn)_hbonds_cleaned.csv")
+sim_bam_bgcn_hbonds_cleaned_bgcn_side %>% head() %>% kable()
+```
+
+```{r}
+sim_bam_bgcn_hbonds_cleaned_bgcn_side_filtered <- sim_bam_bgcn_hbonds_cleaned_bgcn_side %>% filter(distance_between >= 5)
+```
+
+```{r}
+write.csv(sim_bam_bgcn_hbonds_cleaned_bgcn_side_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/sim_bam_(bgcn)_cleaned_filtered.csv")
+```
+
+
+```{r}
+tei_bam_bgcn_hbonds_cleaned_bgcn_side <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/tei_bam_(bgcn)_hbonds_cleaned.csv")
+tei_bam_bgcn_hbonds_cleaned_bgcn_side %>% head() %>% kable()
+```
+
+```{r}
+tei_bam_bgcn_hbonds_cleaned_bgcn_side_filtered <- tei_bam_bgcn_hbonds_cleaned_bgcn_side %>% filter(distance_between >= 5)
+```
+
+```{r}
+write.csv(tei_bam_bgcn_hbonds_cleaned_bgcn_side_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/tei_bam_(bgcn)_cleaned_filtered.csv")
+```
+
+
+```{r}
+yak_bam_bgcn_hbonds_cleaned_bgcn_side <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/yak_bam_(bgcn)_hbonds_cleaned.csv")
+yak_bam_bgcn_hbonds_cleaned_bgcn_side %>% head() %>% kable()
+```
+
+```{r}
+yak_bam_bgcn_hbonds_cleaned_bgcn_side_filtered <- yak_bam_bgcn_hbonds_cleaned_bgcn_side %>% filter(distance_between >= 5)
+```
+
+```{r}
+write.csv(yak_bam_bgcn_hbonds_cleaned_bgcn_side_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/yak_bam_(bgcn)_cleaned_filtered.csv")
+```
+
+```{r}
+mel_simbam_Dn2_D89_hbonds_cleaned <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bonds_cleaned/mel_simbam_Dn2_D89_hbonds_cleaned.csv")
+mel_simbam_Dn2_D89_hbonds_cleaned %>% head() %>% kable()
+```
+
+```{r}
+mel_simbam_Dn2_D89_hbonds_filtered <- mel_simbam_Dn2_D89_hbonds_cleaned %>% filter(distance_between >= 5)
+```
+
+```{r}
+write.csv(mel_simbam_Dn2_D89_hbonds_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bonds_cleaned/mel_simbam_Dn2_D89_hbonds_cleaned_filtered.csv")
+```
+
+```{r}
+mel_simbam_Dn3_D91_hbonds_cleaned <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bonds_cleaned/mel_simbam_Dn3_D91_hbonds_cleaned.csv")
+mel_simbam_Dn3_D91_hbonds_cleaned %>% head() %>% kable()
+```
+
+
+```{r}
+mel_simbam_Dn3_D91_hbonds_filtered <- mel_simbam_Dn3_D91_hbonds_cleaned %>% filter(distance_between >= 5)
+```
+
+```{r}
+write.csv(mel_simbam_Dn3_D91_hbonds_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bonds_cleaned/mel_simbam_Dn3_D91_hbonds_cleaned_filtered.csv")
+```
+
+
+```{r}
+mel_simbam1_Dn2_D89_bgcn_hbonds_cleaned <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_(simbam)_Dn2_D89_bgcn_H-bonds_cleaned.csv")
+mel_simbam1_Dn2_D89_bgcn_hbonds_cleaned %>% head() %>% kable()
+```
+
+```{r}
+mel_simbam1_Dn2_D89_bgcn_hbonds_filtered <- mel_simbam1_Dn2_D89_bgcn_hbonds_cleaned %>% filter(distance_between >= 5)
+```
+
+
+```{r}
+write.csv(mel_simbam1_Dn2_D89_bgcn_hbonds_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_(simbam)_Dn2_D89_bgcn_hbonds_cleaned_filtered.csv")
+```
+
+```{r}
+mel_simbam2_Dn2_D89_bgcn_hbonds_cleaned <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_simbam_Dn2_D89_(bgcn)_H-bonds_cleaned.csv")
+mel_simbam1_Dn2_D89_bgcn_hbonds_cleaned %>% head() %>% kable()
+```
+
+
+```{r}
+mel_simbam2_Dn2_D89_bgcn_hbonds_filtered <- mel_simbam2_Dn2_D89_bgcn_hbonds_cleaned %>% filter(distance_between >= 5)
+```
+
+
+```{r}
+write.csv(mel_simbam2_Dn2_D89_bgcn_hbonds_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_simbam_Dn2_D89_(bgcn)_hbonds_cleaned_filtered.csv")
+```
+
+
+```{r}
+mel_simbam1_Dn3_D91_bgcn_hbonds_cleaned <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_(simbam)_Dn3_D91_bgcn_hbonds_cleaned.csv")
+mel_simbam1_Dn3_D91_bgcn_hbonds_cleaned %>% head() %>% kable()
+```
+
+```{r}
+mel_simbam1_Dn3_D91_bgcn_hbonds_filtered <- mel_simbam1_Dn3_D91_bgcn_hbonds_cleaned %>% filter(distance_between >= 5)
+```
+
+```{r}
+write.csv(mel_simbam1_Dn3_D91_bgcn_hbonds_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_(simbam)_Dn3_D91_bgcn_hbonds_cleaned_filtered.csv")
+```
+
+
+```{r}
+mel_simbam2_Dn3_D91_bgcn_hbonds_cleaned <- read_csv("/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_simbam_Dn3_D91_(bgcn)_hbonds_cleaned.csv")
+mel_simbam2_Dn3_D91_bgcn_hbonds_cleaned %>% head() %>% kable()
+```
+
+
+```{r}
+mel_simbam2_Dn3_D91_bgcn_hbonds_filtered <- mel_simbam2_Dn3_D91_bgcn_hbonds_cleaned %>% filter(distance_between >= 5)
+```
+
+
+```{r}
+write.csv(mel_simbam2_Dn3_D91_bgcn_hbonds_filtered, file = "/Users/la424/alphafold_results/cleaned_hbond_and_pbond_files/bam_bgcn_bonds_cleaned/mel_simbam_Dn3_D91_(bgcn)_hbonds_cleaned_filtered.csv")
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
