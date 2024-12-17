@@ -1,0 +1,322 @@
+---
+title: "graphs_using_plddt"
+author: "Luke"
+date: "2024-05-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+library(tidyverse)
+library(knitr)
+```
+
+
+
+```{r}
+plddt_scores<-read_csv("/Users/la424/alphafold_results/plDDT_values_extracted/plDDT_values_included_species.csv")
+plddt_scores %>% head() %>% kable()
+```
+
+```{r}
+plddt_score_plot <- ggplot(plddt_scores, aes(x=residue)) + geom_line(aes(y=mel_plddt), color = "black") + geom_line(aes(y=sb_plddt), color = "green") + geom_line(aes(y=sb1_plddt), color = "red") + geom_line(aes(y=sb2_plddt), color = "blue") + geom_line(aes(y=sim_plddt), color= "orange") +geom_line(aes(y=tei_plddt), color = "purple") +geom_line(aes(y=yak_plddt), color = "yellow") 
+plddt_score_plot
+
+```
+
+```{r}
+ggsave(plddt_score_plot,
+       filename = "plDDT_score_plot.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+ADOPT_scores<-read_csv("/Users/la424/alphafold_results/plDDT_values_extracted/ADOPT_score_included_species.csv")
+ADOPT_scores %>% head() %>% kable()
+```
+```{r}
+ADOPT_score_plot <- ggplot(ADOPT_scores, aes(x=residue)) + geom_line(aes(y=mel_ADOPT), color = "black") + geom_line(aes(y=sb_ADOPT), color = "green") + geom_line(aes(y=sb1_ADOPT), color = "red") + geom_line(aes(y=sb2_ADOPT), color = "blue") + geom_line(aes(y=sim_ADOPT), color= "orange") +geom_line(aes(y=tei_ADOPT), color = "purple") +geom_line(aes(y=yak_ADOPT), color = "yellow")
+ADOPT_score_plot
+
+```
+```{r}
+ggsave(ADOPT_score_plot,
+       filename = "ADOPT_score_plot.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+consurf_complete_scores<-read_csv("/Users/la424/alphafold_results/plDDT_values_extracted/Consurf_complete.csv")
+consurf_complete_scores %>% head() %>% kable()
+```
+
+```{r}
+Consurf_complete_scores_plot_bw <- ggplot(consurf_complete_scores, aes(x=residue)) + geom_line(aes(y=Consurf_complete_conservation_score)) + ylim(1, 9) +
+  theme_bw()
+Consurf_complete_scores_plot_bw
+```
+```{r}
+ggsave(Consurf_complete_scores_plot_bw,
+       filename = "Consurf_complete_scores_plot_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+plddt_score_plot_bw <- ggplot(plddt_scores, aes(x=residue)) + geom_line(aes(y=mel_plddt), color = "black") + geom_line(aes(y=sb_plddt), color = "green") + geom_line(aes(y=sb1_plddt), color = "red") + geom_line(aes(y=sb2_plddt), color = "blue") + geom_line(aes(y=sim_plddt), color= "orange") +geom_line(aes(y=tei_plddt), color = "purple") +geom_line(aes(y=yak_plddt), color = "yellow") + 
+  theme_bw()
+plddt_score_plot_bw
+
+```
+```{r}
+ggsave(plddt_score_plot_bw,
+       filename = "plDDT_score_plot_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+ADOPT_score_plot_bw <- ggplot(ADOPT_scores, aes(x=residue)) + geom_line(aes(y=mel_ADOPT), color = "black") + geom_line(aes(y=sb_ADOPT), color = "green") + geom_line(aes(y=sb1_ADOPT), color = "red") + geom_line(aes(y=sb2_ADOPT), color = "blue") + geom_line(aes(y=sim_ADOPT), color= "orange") +geom_line(aes(y=tei_ADOPT), color = "purple") +geom_line(aes(y=yak_ADOPT), color = "yellow") +
+  theme_bw()
+ADOPT_score_plot_bw
+
+```
+```{r}
+ggsave(ADOPT_score_plot_bw,
+       filename = "ADOPT_score_plot_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+plddt_scores_bound<-read_csv("/Users/la424/alphafold_results/plDDT_values_extracted/plDDT_values_bam_bound.csv")
+plddt_scores %>% head() %>% kable()
+```
+
+
+```{r}
+plddt_score_bound_plot_bw <- ggplot(plddt_scores_bound, aes(x=residue)) + geom_line(aes(y=mel_plddt), color = "black") + geom_line(aes(y=sb_plddt), color = "green") + geom_line(aes(y=sb1_plddt), color = "red") + geom_line(aes(y=sb2_plddt), color = "blue") + geom_line(aes(y=sim_plddt), color= "orange") +geom_line(aes(y=tei_plddt), color = "purple") +geom_line(aes(y=yak_plddt), color = "yellow") + 
+  theme_bw()
+plddt_score_bound_plot_bw
+```
+
+```{r}
+ggsave(plddt_score_bound_plot_bw,
+       filename = "plDDT_score_bound_plot_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+plddt_score_plot_simbam_bw <- ggplot(plddt_scores, aes(x=residue)) + geom_line(aes(y=mel_plddt), color = "black") + geom_line(aes(y=sb_plddt), color = "green") + geom_line(aes(y=sb1_plddt), color = "red") + geom_line(aes(y=sb2_plddt), color = "blue") + geom_line(aes(y=sim_plddt), color= "orange") + 
+  theme_bw()
+plddt_score_plot_simbam_bw
+```
+
+```{r}
+ggsave(plddt_score_plot_simbam_bw,
+       filename = "plDDT_score_plot_simbam_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+```{r}
+plddt_score_plot_mel_yak_bw <- ggplot(plddt_scores, aes(x=residue)) + geom_line(aes(y=mel_plddt), color = "black")  + geom_line(aes(y=sim_plddt), color= "orange") +geom_line(aes(y=tei_plddt), color = "purple") +geom_line(aes(y=yak_plddt), color = "yellow") + 
+  theme_bw()
+plddt_score_plot_mel_yak_bw
+```
+
+```{r}
+ggsave(plddt_score_plot_mel_yak_bw,
+       filename = "plDDT_score_plot_mel_yak_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+ADOPT_score_plot_simbam_bw <- ggplot(ADOPT_scores, aes(x=residue)) + geom_line(aes(y=mel_ADOPT), color = "black") + geom_line(aes(y=sb_ADOPT), color = "green") + geom_line(aes(y=sb1_ADOPT), color = "red") + geom_line(aes(y=sb2_ADOPT), color = "blue") + geom_line(aes(y=sim_ADOPT), color= "orange")  +
+  theme_bw()
+ADOPT_score_plot_simbam_bw
+```
+
+```{r}
+ggsave(ADOPT_score_plot_simbam_bw,
+       filename = "ADOPT_score_plot_simbam_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+ADOPT_score_plot_mel_yak_bw <- ggplot(ADOPT_scores, aes(x=residue)) + geom_line(aes(y=mel_ADOPT), color = "black")  + geom_line(aes(y=sim_ADOPT), color= "orange") +geom_line(aes(y=tei_ADOPT), color = "purple") +geom_line(aes(y=yak_ADOPT), color = "yellow") +
+  theme_bw()
+ADOPT_score_plot_mel_yak_bw
+```
+
+
+```{r}
+ggsave(ADOPT_score_plot_mel_yak_bw,
+       filename = "ADOPT_score_plot__mel_yak_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+
+```{r}
+plddt_score_bound_plot_simbam_bw <- ggplot(plddt_scores_bound, aes(x=residue)) + geom_line(aes(y=mel_plddt), color = "black") + geom_line(aes(y=sb_plddt), color = "green") + geom_line(aes(y=sb1_plddt), color = "red") + geom_line(aes(y=sb2_plddt), color = "blue") + geom_line(aes(y=sim_plddt), color= "orange")  + 
+  theme_bw()
+plddt_score_bound_plot_simbam_bw
+```
+
+
+```{r}
+ggsave(plddt_score_bound_plot_simbam_bw,
+       filename = "plDDT_score_bound_plot_simbam_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+plddt_score_bound_plot_mel_yak_bw <- ggplot(plddt_scores_bound, aes(x=residue)) + geom_line(aes(y=mel_plddt), color = "black")  + geom_line(aes(y=sim_plddt), color= "orange") +geom_line(aes(y=tei_plddt), color = "purple") +geom_line(aes(y=yak_plddt), color = "yellow") + 
+  theme_bw()
+plddt_score_bound_plot_mel_yak_bw
+```
+
+
+```{r}
+ggsave(plddt_score_bound_plot_mel_yak_bw,
+       filename = "plDDT_score_bound_plot_mel_yak_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+
+
+
+```{r}
+bgcn_plddt_scores<-read_csv("/Users/la424/alphafold_results/plDDT_values_extracted/plDDT_score_bgcn_unbound.csv")
+bgcn_plddt_scores %>% head() %>% kable()
+```
+
+```{r}
+bgcn_plddt_score_plot_bw <- ggplot(bgcn_plddt_scores, aes(x=residue)) + geom_line(aes(y=mel_plddt), color = "black")  + geom_line(aes(y=sim_plddt), color= "orange") +geom_line(aes(y=tei_plddt), color = "purple") +geom_line(aes(y=yak_plddt), color = "yellow") + 
+  theme_bw()
+bgcn_plddt_score_plot_bw
+```
+
+
+```{r}
+ggsave(bgcn_plddt_score_plot_bw,
+       filename = "bgcn_plDDT_score_plot_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+
+
+
+```{r}
+bgcn_bound_plddt_scores<-read_csv("/Users/la424/alphafold_results/plDDT_values_extracted/plDDT_score_bgcn_bound.csv")
+bgcn_bound_plddt_scores %>% head() %>% kable()
+```
+
+
+
+
+```{r}
+bgcn_plddt_score_bound_plot_bw <- ggplot(bgcn_bound_plddt_scores, aes(x=residue)) + geom_line(aes(y=mel_plddt), color = "black") + geom_line(aes(y=sb_plddt), color = "green") + geom_line(aes(y=sb1_plddt), color = "red") + geom_line(aes(y=sb2_plddt), color = "blue") + geom_line(aes(y=sim_plddt), color= "orange") +geom_line(aes(y=tei_plddt), color = "purple") +geom_line(aes(y=yak_plddt), color = "yellow") + 
+  theme_bw()
+bgcn_plddt_score_bound_plot_bw
+```
+
+
+
+```{r}
+ggsave(bgcn_plddt_score_bound_plot_bw,
+       filename = "bgcn_plddt_score_bound_plot_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+bgcn_plddt_score_bound_mel_yak_plot_bw <- ggplot(bgcn_bound_plddt_scores, aes(x=residue)) + geom_line(aes(y=mel_plddt), color = "black") + geom_line(aes(y=sim_plddt), color= "orange") +geom_line(aes(y=tei_plddt), color = "purple") +geom_line(aes(y=yak_plddt), color = "yellow") + 
+  theme_bw()
+bgcn_plddt_score_bound_mel_yak_plot_bw
+```
+
+
+```{r}
+ggsave(bgcn_plddt_score_bound_mel_yak_plot_bw,
+       filename = "bgcn_plddt_score_bound_mel_yak_plot_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+bgcn_plddt_score_bound_simbam_plot_bw <- ggplot(bgcn_bound_plddt_scores, aes(x=residue)) + geom_line(aes(y=mel_plddt), color = "black") + geom_line(aes(y=sb_plddt), color = "green") + geom_line(aes(y=sb1_plddt), color = "red") + geom_line(aes(y=sb2_plddt), color = "blue") + geom_line(aes(y=sim_plddt), color= "orange") + 
+  theme_bw()
+bgcn_plddt_score_bound_simbam_plot_bw
+```
+
+
+
+```{r}
+ggsave(bgcn_plddt_score_bound_simbam_plot_bw,
+       filename = "bgcn_plddt_score_bound_simbam_plot_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+```{r}
+ADOPT_bgcn_scores<-read_csv("/Users/la424/alphafold_results/ADOPT_bam_outputs/ADOPT_alignment_bgcn.csv")
+ADOPT_bgcn_scores %>% head() %>% kable()
+```
+
+
+```{r}
+ADOPT_bgcn_score_plot_bw <- ggplot(ADOPT_bgcn_scores, aes(x=residue)) + geom_line(aes(y=mel), color = "black")  + geom_line(aes(y=sim), color= "orange") +geom_line(aes(y=tei), color = "purple") +geom_line(aes(y=yak), color = "yellow") +
+  theme_bw()
+ADOPT_bgcn_score_plot_bw
+
+```
+
+
+```{r}
+ggsave(ADOPT_bgcn_score_plot_bw,
+       filename = "ADOPT_bgcn_score_plot_bw.pdf", 
+       device = "pdf",
+       height = 8, width = 10, units = "in") 
+```
+
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
