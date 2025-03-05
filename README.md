@@ -3,11 +3,11 @@ Files for Comparative Analysis of Drosophila Bam and Bgcn Sequences and Predicte
 
 NCBI_fasta_files_and_ancestral_sequence_reconstruction:
 
-NCBI fasta files for bam and ancestral alignments with nodes
+NCBI fasta files for bam and sequence/protein alignments as well as ancestral alignments with nodes
 Bam_fasta_files
 
 
-NCBI fasta files for bgcn and ancestral alignments with nodes
+NCBI fasta files for bgcn and sequence/protein alignments as well as ancestral alignments with nodes
 Bgcn_fasta_files
 
 
